@@ -1,138 +1,130 @@
-# HFD_YOLO
+HFD_YOLO
 
-Proyecto de detección usando **YOLOv8** con webcam y estimación de pose humana.  
+Proyecto de detección usando YOLOv8 con webcam y estimación de pose humana.
 Incluye scripts listos para ejecutar y configuración para macOS, Windows y Visual Studio Code.
 
----
+📦 Contenido del repositorio
 
-## 📦 Contenido del repositorio
+yolo_pose.py — detección de pose humana (keypoints)
 
-- `yolo_pose.py` — detección de pose humana (keypoints)
-- `yolo_webcam.py` — detección estándar con webcam
-- `yolov8n.pt` — pesos YOLOv8 normales
-- `yolov8n-pose.pt` — pesos YOLOv8 de pose
-- `requirements.txt` — dependencias del proyecto
-- `.gitignore` — ignora `.venv/`, `.vscode/`, `__pycache__/`, etc.
+yolo_webcam.py — detección estándar con webcam
 
----
+yolov8n.pt — pesos YOLOv8 normales
 
-# 🚀 1. Requisitos
+yolov8n-pose.pt — pesos YOLOv8 de pose
 
-- Python **3.10 o 3.11**
-- Git instalado
-- Webcam funcional
-- (Opcional pero recomendado) Visual Studio Code
+requirements.txt — dependencias del proyecto
 
----
+.gitignore — ignora .venv/, .vscode/, __pycache__/, etc.
 
-# 📂 2. Clonar el repositorio
+🚀 1. Requisitos
 
-## SSH (recomendado)
-```bash
+Python 3.10 o 3.11
+
+Git instalado
+
+Webcam funcional
+
+(Opcional pero recomendado) Visual Studio Code
+
+📂 2. Clonar el repositorio
+SSH (recomendado)
 git clone git@github.com:filifloresb/HFD_YOLO.git
 cd HFD_YOLO
+
 HTTPS
-bash
-Copy code
 git clone https://github.com/filifloresb/HFD_YOLO.git
 cd HFD_YOLO
+
 🐍 3. Crear y activar entorno virtual
 macOS / Linux
-bash
-Copy code
 python3 -m venv .venv
 source .venv/bin/activate
+
 Windows (PowerShell o CMD)
-bash
-Copy code
 py -m venv .venv
 .\.venv\Scripts\activate
+
+
 Debes ver algo así en la terminal:
 
-scss
-Copy code
 (.venv) user@machine HFD_YOLO %
-📥 4. Instalar dependencias
-Con el entorno virtual activado:
 
-bash
-Copy code
+📥 4. Instalar dependencias
 pip install --upgrade pip
 pip install -r requirements.txt
+
 ▶️ 5. Ejecutar los scripts
 Detección de pose humana
-bash
-Copy code
 python yolo_pose.py
-Detección solo con webcam
-bash
-Copy code
+
+Detección con webcam
 python yolo_webcam.py
+
+
 Si la webcam no funciona, cambia el índice:
 cv2.VideoCapture(0) → cv2.VideoCapture(1) o 2.
 
-🛠️ 6. Configuración en VS Code (opcional)
+🛠️ 6. Configuración en Visual Studio Code (opcional)
 Seleccionar intérprete Python
+
 Abrir la carpeta del proyecto en VS Code
 
-Ctrl+Shift+P / Cmd+Shift+P
+Presionar Ctrl+Shift+P / Cmd+Shift+P
 
-Escribir Python: Select Interpreter
+Buscar: Python: Select Interpreter
 
-Elegir:
+Seleccionar la ruta del entorno virtual:
 
 macOS/Linux:
 
-bash
-Copy code
 .venv/bin/python
+
+
 Windows:
 
-Copy code
 .venv\Scripts\python.exe
+
 Archivo .vscode/settings.json
-jsonc
-Copy code
 {
-  // macOS / Linux
   "python.defaultInterpreterPath": ".venv/bin/python",
   "python.analysis.extraPaths": ["./"]
 
-  // Para Windows, usar esta línea:
+  // Para Windows, usar:
   // "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe"
 }
+
 📌 7. Notas importantes
-La carpeta .venv/ NO se sube a GitHub (está ignorada).
+
+La carpeta .venv/ NO debe subirse a GitHub.
 
 Si instalas nuevas librerías, actualiza requirements.txt:
 
-bash
-Copy code
 pip freeze > requirements.txt
-Si macOS bloquea la cámara, ve a:
+
+
+Si macOS bloquea la cámara:
 Preferencias del Sistema → Seguridad y Privacidad → Cámara
 
 ❗ 8. Problemas comunes
 “No module named ultralytics”
-No instalaste dependencias.
-✔ Solución:
 
-bash
-Copy code
+Solución:
+
 pip install -r requirements.txt
-“Permission denied” al activar .venv en macOS
-bash
-Copy code
-chmod +x .venv/bin/activate
-Webcam no detectada
-Cerrar apps que usen la cámara
 
-Cambiar índice de la cámara
+Error de permisos al activar .venv en macOS
+chmod +x .venv/bin/activate
+
+Webcam no detectada
+
+Cerrar Zoom / Teams / OBS
+
+Cambiar índice de cámara
 
 Revisar permisos del sistema
 
 📁 9. Estructura del proyecto
-Copy code
 HFD_YOLO/
 │── yolo_pose.py
 │── yolo_webcam.py
@@ -141,3 +133,7 @@ HFD_YOLO/
 │── requirements.txt
 │── .gitignore
 └── .vscode/ (opcional)
+
+🎉 ¡Listo!
+
+Tu proyecto está completamente listo para correr en macOS y Windows, con entorno virtual, dependencias y scripts funcionando correctamente.
