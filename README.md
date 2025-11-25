@@ -69,4 +69,27 @@ Seleccionar intérprete Python
 1. Abrir VS Code
 2. Ctrl + Shift + P / Cmd + Shift + P
 3. Elegir: Python: Select Interpreter
+### macOS/Linux:
+.venv/bin/python
+### Windows:
+.venv\Scripts\python.exe
 
+### Archivo .vscode/settings.json
+{
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.analysis.extraPaths": ["./"]
+    // En Windows usar:
+    // "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe"
+}
+
+
+## 📁 Estructura del Proyecto
+HFD_YOLO/
+│
+├── yolo_pose.py
+├── yolo_webcam.py
+├── yolov8n.pt
+├── yolov8n-pose.pt
+├── requirements.txt
+├── .gitignore
+└── .vscode/ (opcional)
