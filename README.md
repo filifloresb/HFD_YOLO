@@ -37,3 +37,36 @@ cd HFD_YOLO
 ### 🌐 HTTPS
 git clone https://github.com/filifloresb/HFD_YOLO.git
 cd HFD_YOLO
+
+---
+## 🧪 Crear y Activar un Entorno Virtual
+
+### macOS / Linux
+python3 -m venv .venv
+source .venv/bin/activate
+
+### Windows (PowerShell o CMD)
+py -m venv .venv
+.\.venv\Scripts\activate
+
+Cuando esté activado verás algo como:
+(.venv) usuario@pc HFD_YOLO %
+
+---
+## 📥 Instalar Dependencias
+pip install --upgrade pip
+pip install -r requirements.txt
+
+---
+## ▶️ Ejecutar los Scripts
+### Detección de pose humana
+python yolo_pose.py
+
+---
+## 🧰 Configuración en Visual Studio Code
+Seleccionar intérprete Python
+
+1. Abrir VS Code
+2. Ctrl + Shift + P / Cmd + Shift + P
+3. Elegir: Python: Select Interpreter
+
