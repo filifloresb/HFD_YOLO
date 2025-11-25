@@ -85,11 +85,11 @@ Seleccionar intérprete Python
 
 ## 📁 Estructura del Proyecto
 HFD_YOLO/
-│
-├── yolo_pose.py
-├── yolo_webcam.py
-├── yolov8n.pt
-├── yolov8n-pose.pt
-├── requirements.txt
-├── .gitignore
-└── .vscode/ (opcional)
+├── yolo_pose.py           # Detección de pose humana (keypoints)
+├── yolo_webcam.py         # Detección estándar con webcam
+├── yolov8n.pt             # Pesos YOLOv8 normales
+├── yolov8n-pose.pt        # Pesos YOLOv8 de pose humana
+├── requirements.txt       # Dependencias del proyecto
+├── .gitignore             # Ignora entorno virtual y archivos temporales
+└── .vscode/               # Configuración opcional para Visual Studio Code
+
