@@ -18,22 +18,19 @@ PRINT_INTERVAL = 4   # segundos
 
 
 while True:
-    # ---------------------------------------------------------
     # 1. LEER FRAME DE LA CÁMARA
-    # ---------------------------------------------------------
     ret, frame = cap.read()      # Lee un frame de la webcam
     if not ret:                  # Si no se pudo leer, salimos
         break
 
-    # ---------------------------------------------------------
+
     # 2. CORRER YOLO POSE SOBRE EL FRAME
-    # ---------------------------------------------------------
     results = model(frame, verbose=False) # YOLO procesa la imagen (detección + keypoints) Escribimos false para que no imprima en la terminal el log de velocidad de cada frame
     r = results[0]               # Obtenemos los resultados del único frame
 
-    # ---------------------------------------------------------
+    
     # 3. OBTENER LOS KEYPOINTS DEL CUERPO
-    # ---------------------------------------------------------
+
     # r.keypoints contiene los puntos detectados
     # r.keypoints.xy es un arreglo [personas, keypoints, (x,y)]
     if r.keypoints is not None:
@@ -41,18 +38,18 @@ while True:
         if len(kpts) > 0:
             persona0 = kpts[0].cpu().numpy()
 
-            # --- Keypoints que vamos a usar ---
+            # Keypoints que vamos a usar -- Los keyponts se encuentran definidos en https://docs.ultralytics.com/tasks/pose-detection/#keypoints
             left_shoulder = persona0[5]   # (x, y)
             left_hip      = persona0[11]  # (x, y)
             left_wrist    = persona0[9]   # (x, y)  -> brazo extendido
 
-            # --- Vector del torso (hombro -> cadera) ---
+            # Vector del torso (hombro -> cadera)
             v_torso = left_hip - left_shoulder
 
-            # --- Vector del brazo (hombro -> muñeca) ---
+            # Vector del brazo (hombro -> muñeca)
             v_arm = left_wrist - left_shoulder
 
-            # --- Ángulo entre torso y brazo en el hombro ---
+            # Ángulo entre torso y brazo en el hombro 
             dot = np.dot(v_torso, v_arm)
             mag_torso = np.linalg.norm(v_torso)
             mag_arm = np.linalg.norm(v_arm)
